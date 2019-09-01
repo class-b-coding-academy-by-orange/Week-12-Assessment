@@ -19,6 +19,7 @@ export class LifeCycle1 extends Component {
     
     other than this you should update (the props message if it was 'second')
   */
+   
 
   render() {
     return (
@@ -40,3 +41,8 @@ export default LifeCycle1;
   1- the props message should be a string
   2- the props title should be a string and require
 */
+// LifeCycle1.propTypes = {
+//   message :PropTypes.string,
+//   title :PropTypes.string.isRequired
+  
+// };
