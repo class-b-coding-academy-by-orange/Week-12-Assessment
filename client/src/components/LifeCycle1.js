@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { PromiseProvider } from 'mongoose';
+import { prototype } from 'events';
+import PropTypes from 'prop-types';
 
 export class LifeCycle1 extends Component {
   constructor() {
@@ -8,8 +11,8 @@ export class LifeCycle1 extends Component {
     };
   }
 
-  changeState = () => {
-    this.setState({ title: 'dont update the title' });
+  changeState = async () => {
+    await this.setState({ title: 'dont update the title' });
   };
 
   /*
@@ -19,6 +22,21 @@ export class LifeCycle1 extends Component {
     
     other than this you should update (the props message if it was 'second')
   */
+
+  shouldComponentUpdate(nextProps, nextState) {
+    // A typical shallow comparison
+    if (nextProps.message === 'first') {
+      console.log('noChange Message');
+      return false;
+    }
+    if (nextState.title === 'dont update the title') {
+      console.log('noChange Title');
+      return false;
+    }
+
+    return true;
+  }
+
 
   render() {
     return (
@@ -33,10 +51,17 @@ export class LifeCycle1 extends Component {
   }
 }
 
-export default LifeCycle1;
+LifeCycle1.propTypes = {
+  message: PropTypes.string,
+  title: PropTypes.string.isRequired,
 
+
+}
+
+export default LifeCycle1;
 /*
   Q5: in this component you should use props type:
   1- the props message should be a string
   2- the props title should be a string and require
 */
+
