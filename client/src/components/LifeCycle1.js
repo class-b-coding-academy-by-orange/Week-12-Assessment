@@ -20,6 +20,8 @@ export class LifeCycle1 extends Component {
     other than this you should update (the props message if it was 'second')
   */
 
+     
+
   render() {
     return (
       <div style={{ border: 'solid 2px red' }}>
