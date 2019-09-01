@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
 
 export class LifeCycle1 extends Component {
   constructor() {
@@ -20,6 +22,33 @@ export class LifeCycle1 extends Component {
     other than this you should update (the props message if it was 'second')
   */
 
+  shouldComponentUpdate() {
+    const changeLifeCycleClicked = this.state.title === 'dont update the title' 
+    const propMessageIsFirst = this.props.message === 'first';
+
+    console.log(changeLifeCycleClicked, this.state.title);
+    console.log(propMessageIsFirst);
+
+    if (changeLifeCycleClicked) {
+      this.setState({title: 'lifecycle 1'})
+      return false;
+    }
+    else if (propMessageIsFirst)
+      return false;
+    else
+      return false;
+  } 
+/*
+   componentWillReceiveProps(previousProps) {
+     console.log(previousProps);
+     if(previousProps.message = 'second') {
+        previousProps.message = 'one';
+     }
+   }
+
+   */
+
+
   render() {
     return (
       <div style={{ border: 'solid 2px red' }}>
@@ -40,3 +69,8 @@ export default LifeCycle1;
   1- the props message should be a string
   2- the props title should be a string and require
 */
+
+LifeCycle1.propTypes = {
+  message: PropTypes.string,
+  title: PropTypes.string.isRequired
+}
