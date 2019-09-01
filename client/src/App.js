@@ -29,10 +29,10 @@ export default class App extends Component {
   //Q1: we have 4 errors here please fix them
   addTodoItem = (newTask, cb) => {
     axios
-      .get('http://localhost:9000/task', newTask)
+      .post('http://localhost:9000/tasks', newTask)
       .then(res => {
-        const tasks = res;
-        this.state.task = tasks;
+        // const tasks = res;
+        this.setState({tasks: [...this.state.tasks, res.data]})
       })
       .catch(error => {
         console.log(error);
@@ -56,8 +56,8 @@ export default class App extends Component {
     axios
       .delete(`http://localhost:9000/tasks/${id}`)
       .then(res => {
-        const tasks = res.data;
-        this.setState({ tasks });
+        // const tasks = res.data;
+        this.setState({ tasks: res.data });
       })
       .catch(error => {
         console.log(error);
