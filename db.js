@@ -64,11 +64,13 @@ let updateTask = (id, cb) => {
 
 //Q3:we have 4 errors here please fix them
 let deleteTask = (id, cb) => {
-  tasks.deleteOne({ ID: cb }, (err, result) => {
+  console.log('DB:deleteItem', id);
+  tasks.deleteOne({_id:id}, (err, result) => {
     if (err) {
       cb(err);
     } else {
-      getTasks();
+      console.log('DB:deleteTask My data:', result);
+      getTasks(cb);
     }
   });
 };

@@ -24,11 +24,12 @@ app.post('/tasks', (req, res) => {
   })
 });
 
-//Q2: we have 4 errors here please fix them
-app.put('/tasks', (req, res) => {
-  let id = req.params.id;
-  mongo.updateTask(ID, (result) => {
-    res.json();
+//Q2: we have 3 errors here please fix them
+app.put('/tasks/:id', (req, res) => {
+  console.log('SERVER:Put Data', req.body);
+  let id =  req.params.id;
+  mongo.updateTask(id, result => {
+    res.json(result);
   })
 });
 
