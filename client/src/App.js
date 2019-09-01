@@ -10,7 +10,8 @@ export default class App extends Component {
     this.state = {
       tasks: [],
       message: 'message from app component',
-      title: 'title from app component'
+      title: 'title from app component',
+     task:{id:1} 
     };
   }
 
@@ -29,10 +30,14 @@ export default class App extends Component {
   //Q1: we have 4 errors here please fix them
   addTodoItem = (newTask, cb) => {
     axios
-      .get('http://localhost:9000/task', newTask)
+      .get('http://localhost:9000/tasks', newTask)
       .then(res => {
-        const tasks = res;
-        this.state.task = tasks;
+        const tasks = res.data;
+        // this.state.task = tasks;
+        console.log(res)
+        this.setState({
+          tasks:[...tasks, newTask]
+        })
       })
       .catch(error => {
         console.log(error);
@@ -92,6 +97,7 @@ export default class App extends Component {
           tasks={tasks}
           toggleComplete={toggleComplete}
           deleteItem={deleteItem}
+          addTodoItem={addTodoItem}
         />
       </React.Fragment>
     );
