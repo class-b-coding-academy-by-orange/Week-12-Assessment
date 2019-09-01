@@ -4,7 +4,8 @@ export class LifeCycle1 extends Component {
   constructor() {
     super();
     this.state = {
-      title: 'lifecycle 1'
+      title: 'lifecycle 1',
+      message:""
     };
   }
 
@@ -27,7 +28,7 @@ export class LifeCycle1 extends Component {
         <button onClick={this.changeState}>Change LifeCycle state</button>
         <p>STATE TITLE: {this.state.title}</p>
         <p>PROPS MESSAGE: {this.props.message}</p>
-        <p>PROPS TITLE: {this.props.title}</p>
+        <p required >PROPS TITLE: {this.props.title}</p>
       </div>
     );
   }

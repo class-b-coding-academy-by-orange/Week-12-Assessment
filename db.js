@@ -64,11 +64,11 @@ let updateTask = (id, cb) => {
 
 //Q3:we have 4 errors here please fix them
 let deleteTask = (id, cb) => {
-  tasks.deleteOne({ ID: cb }, (err, result) => {
+  Tasks.deleteOne({ id: cb }, (err, result) => {
     if (err) {
       cb(err);
     } else {
-      getTasks();
+      getTasks(cb);
     }
   });
 };
