@@ -26,9 +26,9 @@ app.post('/tasks', (req, res) => {
 
 //Q2: we have 4 errors here please fix them
 app.put('/tasks', (req, res) => {
-  let id = req.params.id;
-  mongo.updateTask(ID, (result) => {
-    res.json();
+  let id = req.id;
+  mongo.update(id , (result) => {
+    res.json(result);
   })
 });
 

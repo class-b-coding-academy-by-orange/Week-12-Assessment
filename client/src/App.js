@@ -32,10 +32,10 @@ export default class App extends Component {
       .get('http://localhost:9000/task', newTask)
       .then(res => {
         const tasks = res;
-        this.state.task = tasks;
+        this.state.tasks = tasks;
       })
-      .catch(error => {
-        console.log(error);
+      .catch(err => {
+        console.log(err);
       });
     cb();
   };
