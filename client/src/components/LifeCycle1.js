@@ -10,6 +10,7 @@ export class LifeCycle1 extends Component {
 
   changeState = () => {
     this.setState({ title: 'dont update the title' });
+    
   };
 
   /*
@@ -19,12 +20,14 @@ export class LifeCycle1 extends Component {
     
     other than this you should update (the props message if it was 'second')
   */
-
+ handleChange(event) {
+  this.setState({ title: event.currentTarget.value });
+}
   render() {
     return (
       <div style={{ border: 'solid 2px red' }}>
         <h6>LifeCycle 1 Component</h6>
-        <button onClick={this.changeState}>Change LifeCycle state</button>
+        <button onClick={this.changeState}onClick={this.handleChange}>Change LifeCycle state</button>
         <p>STATE TITLE: {this.state.title}</p>
         <p>PROPS MESSAGE: {this.props.message}</p>
         <p>PROPS TITLE: {this.props.title}</p>
@@ -40,3 +43,6 @@ export default LifeCycle1;
   1- the props message should be a string
   2- the props title should be a string and require
 */
+
+ propTypes = { message: PropTypes.string };
+ propTypes = { title: PropTypes.string ,require}

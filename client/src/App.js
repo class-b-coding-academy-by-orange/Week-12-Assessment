@@ -27,19 +27,19 @@ export default class App extends Component {
   }
 
   //Q1: we have 4 errors here please fix them
-  addTodoItem = (newTask, cb) => {
+  
+ getTasks = (newTask, cb) => {
     axios
       .get('http://localhost:9000/task', newTask)
       .then(res => {
         const tasks = res;
-        this.state.task = tasks;
+        this.Setstate({Task : tasks.data})
       })
       .catch(error => {
         console.log(error);
       });
     cb();
   };
-
   toggleComplete = id => {
     axios
       .put(`http://localhost:9000/tasks/${id}`)
