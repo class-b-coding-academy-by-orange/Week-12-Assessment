@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import propTypes from 'prop-types';
+
+
 
 export class LifeCycle1 extends Component {
   constructor() {
@@ -10,16 +13,23 @@ export class LifeCycle1 extends Component {
 
   changeState = () => {
     this.setState({ title: 'dont update the title' });
+    
   };
 
+
+  
   /*
     Q4: in this component you should didnt update:
     1- the state (title) if you click on the button Change LifeCycle state
     2- the props message if it was 'first'
+
     
     other than this you should update (the props message if it was 'second')
   */
 
+   
+ 
+ 
   render() {
     return (
       <div style={{ border: 'solid 2px red' }}>
@@ -33,7 +43,14 @@ export class LifeCycle1 extends Component {
   }
 }
 
+
+
 export default LifeCycle1;
+
+LifeCycle1.propTypes={
+ message:propTypes.string,
+ title:propTypes.string
+}
 
 /*
   Q5: in this component you should use props type:
