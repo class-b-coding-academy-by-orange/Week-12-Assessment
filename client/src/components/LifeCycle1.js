@@ -20,24 +20,30 @@ export class LifeCycle1 extends Component {
     
     other than this you should update (the props message if it was 'second')
   */
- shouldComponentUpdate(prevProps){
+ shouldComponentUpdate(nextProps,nextstate){
    
 //   // if (prevProps.message !== this.props.message) {
 //   //   console.log("second");
 //   // }
+
+
+
+//   // console.log(prevProps.message)
+//   // console.log(this.props.message)
+
+if (nextstate.title === "dont update the title" ||nextProps.message === "first")
+  {
+    return false;
+  }
+else {
+  return true;
+}
 
 //   // const pr = {
 //   //   prevProps.message: "second"
 //   // };
   
 //   // return pr;
-
-//   // console.log(prevProps.message)
-//   // console.log(this.props.message)
-
-
-
-
   }
 
   render() {
