@@ -11,7 +11,19 @@ export class LifeCycle1 extends Component {
   changeState = () => {
     this.setState({ title: 'dont update the title' });
   };
-
+  shouldComponentUpdate(props, state) {
+    //should write if statment like this and return false [1 pt]
+    if (state.title === 'dont update the title') {
+      return false;
+    }
+    //should write if statment like this and return false [1 pt]
+    if (props.message === 'first') {
+      return false;
+      //should have else statment like this and return true [1 pt]
+    } else {
+      return true;
+    }
+  }
   /*
     Q4: in this component you should didnt update:
     1- the state (title) if you click on the button Change LifeCycle state
