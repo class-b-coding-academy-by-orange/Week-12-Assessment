@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types'
 
 export class LifeCycle1 extends Component {
   constructor() {
@@ -6,6 +7,24 @@ export class LifeCycle1 extends Component {
     this.state = {
       title: 'lifecycle 1'
     };
+  }
+// componentWillMount(){
+//   shouldComponentUpdate(){
+//     if (this.props.message === 'first'){
+//       return false
+//     }
+//   }
+// }
+
+  shouldComponentUpdate(nextProps, nextState){
+    // if (nextProps === 'first'){
+
+    if (this.props.message === 'first'){
+      return false;
+    }
+    if(nextState) {
+      return false
+    }
   }
 
   changeState = () => {
@@ -27,6 +46,7 @@ export class LifeCycle1 extends Component {
         <button onClick={this.changeState}>Change LifeCycle state</button>
         <p>STATE TITLE: {this.state.title}</p>
         <p>PROPS MESSAGE: {this.props.message}</p>
+        {console.log(this.props.message)}
         <p>PROPS TITLE: {this.props.title}</p>
       </div>
     );
@@ -40,3 +60,8 @@ export default LifeCycle1;
   1- the props message should be a string
   2- the props title should be a string and require
 */
+
+// LifeCycle1.PropTypes = {
+//   message: PropTypes.string,
+//   title: PropTypes.string.isRequired
+// }
