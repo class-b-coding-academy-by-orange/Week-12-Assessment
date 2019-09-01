@@ -29,10 +29,10 @@ export default class App extends Component {
   //Q1: we have 4 errors here please fix them
   addTodoItem = (newTask, cb) => {
     axios
-      .get('http://localhost:9000/task', newTask)
+      .post('http://localhost:9000/tasks', newTask)
       .then(res => {
-        const tasks = res;
-        this.state.task = tasks;
+        const tasks = res.data;
+        this.setState.task({ tasks });
       })
       .catch(error => {
         console.log(error);
@@ -40,7 +40,7 @@ export default class App extends Component {
     cb();
   };
 
-  toggleComplete = id => {
+  toggleComplete = (id) => {
     axios
       .put(`http://localhost:9000/tasks/${id}`)
       .then(res => {
@@ -77,7 +77,7 @@ export default class App extends Component {
   };
 
   render() {
-    const { addTodoItem, toggleComplete, deleteItem, changeMessage } = this;
+    const { addTodoItem, toggleComplete, deleteItem } = this;
     const { tasks, message, title } = this.state;
     return (
       <React.Fragment>
