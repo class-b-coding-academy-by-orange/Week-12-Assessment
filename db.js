@@ -41,7 +41,7 @@ let addTask = (task, cb) => {
 };
 
 let updateTask = (id, cb) => {
-  Tasks.find({ _id: id }, (err, task) => {
+  Tasks.find({ _id: id}, (err, task) => {
     if (err) {
       cb(err);
     } else {
@@ -50,10 +50,13 @@ let updateTask = (id, cb) => {
         {
           $set: { isCompleted: !task[0].isCompleted }
         },
-        (err, result) => {
-          if (err) {
+
+        (err) => {
+          if (err)
+           {
             cb(err);
-          } else {
+          } else
+           {
             getTasks(cb);
           }
         }
@@ -64,11 +67,11 @@ let updateTask = (id, cb) => {
 
 //Q3:we have 4 errors here please fix them
 let deleteTask = (id, cb) => {
-  tasks.deleteOne({ ID: cb }, (err, result) => {
+  Tasks.deleteOne({_id:id}, (err) => {
     if (err) {
       cb(err);
     } else {
-      getTasks();
+      getTasks(cb);
     }
   });
 };

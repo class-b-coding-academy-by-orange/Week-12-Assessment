@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
 export class LifeCycle1 extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       title: 'lifecycle 1'
     };
@@ -19,6 +19,12 @@ export class LifeCycle1 extends Component {
     
     other than this you should update (the props message if it was 'second')
   */
+ shouldComponentUpdate(nextprop,nextstate){
+   if(this.state!==nextstate)
+   
+   return true
+ 
+ }
 
   render() {
     return (
@@ -40,3 +46,7 @@ export default LifeCycle1;
   1- the props message should be a string
   2- the props title should be a string and require
 */
+// LifeCycle1.propTypes = {
+//   title: PropTypes.string.isRequired,
+//   message: PropTypes.strings
+// };
