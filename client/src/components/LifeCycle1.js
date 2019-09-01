@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
 
 export class LifeCycle1 extends Component {
   constructor() {
@@ -20,6 +22,11 @@ export class LifeCycle1 extends Component {
     other than this you should update (the props message if it was 'second')
   */
 
+  /* i want to insert if statement in the changestate function to check the value of the title and change it or not
+  according to the condition in the question
+  also i will check the value of the props message if it was first then i will not change the value otherwise the function should run like before
+  
+*/
   render() {
     return (
       <div style={{ border: 'solid 2px red' }}>
@@ -40,3 +47,8 @@ export default LifeCycle1;
   1- the props message should be a string
   2- the props title should be a string and require
 */
+//  hereis the the solution for the question
+// LifeCycle1.propTypes = {
+//   message: propTypes.string,
+//   title: propTypes.string.isReuired
+// }
