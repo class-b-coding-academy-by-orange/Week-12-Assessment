@@ -5,9 +5,11 @@ export class AddTodoItem extends Component {
     title: '',
     isCompleted: false
   }
-  onChange = (e) => {
+  onChange = (e) => 
+  
+  {
     this.setState({
-      title: e.target.value
+ title: e.target.value
     });
   }
   resetInput = () => {
@@ -16,6 +18,8 @@ export class AddTodoItem extends Component {
     })
   }
   render() {
+    console.log(this.state.title)
+
     const { state, onChange, resetInput } = this
     const { title } = this.state;
     const { addTodoItem } = this.props;
