@@ -25,16 +25,16 @@ app.post('/tasks', (req, res) => {
 });
 
 //Q2: we have 4 errors here please fix them
-app.put('/tasks', (req, res) => {
-  let id = req.params.id;
+app.put('/tasks/:id', (req, res) => {
+  let ID = req.params.id;
   mongo.updateTask(ID, (result) => {
-    res.json();
+    res.json(result);
   })
 });
 
 app.delete('/tasks/:id', (req, res) => {
   let id = req.params.id;
-  mongo.deleteTask(id, (result) => {
+  mongo.deleteTask(id, result => {
     res.json(result);
   })
 });
