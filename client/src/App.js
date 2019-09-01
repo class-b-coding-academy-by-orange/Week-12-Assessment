@@ -19,6 +19,7 @@ export default class App extends Component {
       .get('http://localhost:9000/tasks')
       .then(res => {
         const tasks = res.data;
+        console.log('res.data', res.data);
         this.setState({ tasks });
       })
       .catch(error => {
@@ -28,11 +29,10 @@ export default class App extends Component {
 
   //Q1: we have 4 errors here please fix them
   addTodoItem = (newTask, cb) => {
-    axios
-      .get('http://localhost:9000/task', newTask)
+    axios.post('http://localhost:9000/tasks', newTask)
       .then(res => {
-        const tasks = res;
-        this.state.task = tasks;
+        const tasks = res.data;
+        this.setState(tasks)
       })
       .catch(error => {
         console.log(error);
@@ -44,6 +44,7 @@ export default class App extends Component {
     axios
       .put(`http://localhost:9000/tasks/${id}`)
       .then(res => {
+        console.log('res', res);
         const tasks = res.data;
         this.setState({ tasks });
       })
@@ -64,8 +65,8 @@ export default class App extends Component {
       });
   };
 
-  changeMessege1 = () => {
-    this.setState({ message: 'first' });
+  changeMessege1 = async () => {
+    await this.setState({ message: 'first' });
   };
 
   changeMessege2 = () => {
@@ -77,7 +78,7 @@ export default class App extends Component {
   };
 
   render() {
-    const { addTodoItem, toggleComplete, deleteItem, changeMessage } = this;
+    const { addTodoItem, toggleComplete, deleteItem } = this;
     const { tasks, message, title } = this.state;
     return (
       <React.Fragment>
