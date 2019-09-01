@@ -38,7 +38,7 @@ export default LifeCycle1;
 
 LifeCycle1.propTypes = {
   message: PropTypes.string,
-  title: PropsType.string.isRequired
+  title: PropTypes.string.isRequired
 };
 /*
   Q5: in this component you should use props type:
