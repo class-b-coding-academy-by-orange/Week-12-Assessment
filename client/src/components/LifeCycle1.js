@@ -1,15 +1,17 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
 
 export class LifeCycle1 extends Component {
   constructor() {
     super();
     this.state = {
-      title: 'lifecycle 1'
+      title: "lifecycle 1"
     };
   }
 
   changeState = () => {
-    this.setState({ title: 'dont update the title' });
+    console.log("changeState");
+    this.setState({ title: "dont update the title" });
   };
 
   /*
@@ -20,9 +22,22 @@ export class LifeCycle1 extends Component {
     other than this you should update (the props message if it was 'second')
   */
 
+  shouldComponentUpdate(nextProps, nextState) {
+    console.log("shouldComponentUpdate", this.state.title);
+    console.log("shouldComponentUpdate NEXT", nextState.title);
+    console.log("shouldComponentUpdate nextProps ", nextProps.message);
+
+    if (
+      nextState.title === "dont update the title" ||
+      nextProps.message === "first"
+    )
+      return false;
+    else return true;
+  }
+
   render() {
     return (
-      <div style={{ border: 'solid 2px red' }}>
+      <div style={{ border: "solid 2px red" }}>
         <h6>LifeCycle 1 Component</h6>
         <button onClick={this.changeState}>Change LifeCycle state</button>
         <p>STATE TITLE: {this.state.title}</p>
@@ -40,3 +55,8 @@ export default LifeCycle1;
   1- the props message should be a string
   2- the props title should be a string and require
 */
+
+LifeCycle1.propTypes = {
+  message: PropTypes.string,
+  title: PropTypes.string.isRequired
+};
