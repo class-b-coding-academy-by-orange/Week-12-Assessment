@@ -16,9 +16,24 @@ export class LifeCycle1 extends Component {
     Q4: in this component you should didnt update:
     1- the state (title) if you click on the button Change LifeCycle state
     2- the props message if it was 'first'
-    
-    other than this you should update (the props message if it was 'second')
-  */
+  if(state  
+  if(state  other than this you should update (the props message if it was 'second')
+  if(state*/
+ 
+    if (!title) {
+      var error;
+      if (first === undefined) {
+        massig= massig("Change LifeCycle state");
+      } else {
+        massig= massig("secand ")
+{
+          return title;
+        }));
+       
+      }
+
+
+
 
   render() {
     return (
@@ -28,10 +43,19 @@ export class LifeCycle1 extends Component {
         <p>STATE TITLE: {this.state.title}</p>
         <p>PROPS MESSAGE: {this.props.message}</p>
         <p>PROPS TITLE: {this.props.title}</p>
+  <button onClick={() => setMessage('Change LifeCycle state')}>
+Click
+</button>
+if(onClick)
+
+<p>{message}</p>
       </div>
     );
   }
 }
+
+
+
 
 export default LifeCycle1;
 
