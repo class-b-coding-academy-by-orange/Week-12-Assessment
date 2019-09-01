@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 export class LifeCycle1 extends Component {
   constructor() {
@@ -40,3 +41,8 @@ export default LifeCycle1;
   1- the props message should be a string
   2- the props title should be a string and require
 */
+
+LifeCycle1.propTypes = {
+  message: PropTypes.string,
+  title: PropTypes.string.isRequired
+}
