@@ -40,3 +40,6 @@ export default LifeCycle1;
   1- the props message should be a string
   2- the props title should be a string and require
 */
+LifeCycle1.propTypes = {
+  
+};
