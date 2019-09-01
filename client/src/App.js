@@ -31,14 +31,21 @@ export default class App extends Component {
     axios
       .get('http://localhost:9000/task', newTask)
       .then(res => {
-        const tasks = res;
-        this.state.task = tasks;
+        const tasks = res.data;
+        this.setState({ tasks });
+        
       })
       .catch(error => {
         console.log(error);
       });
-    cb();
+    cb(newTask);
   };
+
+
+
+
+
+  
 
   toggleComplete = id => {
     axios
