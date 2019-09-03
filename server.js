@@ -6,37 +6,37 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-app.get('/', (req, res) => {
-  res.json('server is working');
+app.get("/", (req, res) => {
+  res.json("server is working");
 });
 
-app.get('/tasks', (req, res) => {
-  let callBack = (result) => {
+app.get("/tasks", (req, res) => {
+  let callBack = result => {
     res.json(result);
-  }
-  mongo.getTasks(callBack)
+  };
+  mongo.getTasks(callBack);
 });
 
-app.post('/tasks', (req, res) => {
+app.post("/tasks", (req, res) => {
   let newTask = req.body;
-  mongo.addTask(newTask, (result) => {
+  mongo.addTask(newTask, result => {
     res.json(result);
-  })
+  });
 });
 
 //Q2: we have 4 errors here please fix them
-app.put('/tasks', (req, res) => {
+app.put("/tasks/:id", (req, res) => {
   let id = req.params.id;
-  mongo.updateTask(ID, (result) => {
-    res.json();
-  })
+  mongo.updateTask(id, result => {
+    res.json(result);
+  });
 });
 
-app.delete('/tasks/:id', (req, res) => {
+app.delete("/tasks/:id", (req, res) => {
   let id = req.params.id;
-  mongo.deleteTask(id, (result) => {
+  mongo.deleteTask(id, result => {
     res.json(result);
-  })
+  });
 });
 
 const PORT = process.env.PORT || 9000;

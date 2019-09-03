@@ -1,15 +1,15 @@
-const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/week-12', { useNewUrlParser: true });
+const mongoose = require("mongoose");
+mongoose.connect("mongodb://localhost/week-12", { useNewUrlParser: true });
 const db = mongoose.connection;
 
-db.on('error', function() {
-  console.log('mongoose connection error');
-  console.log('____________________________');
+db.on("error", function() {
+  console.log("mongoose connection error");
+  console.log("____________________________");
 });
 
-db.once('open', function() {
-  console.log('mongoose connected successfully');
-  console.log('____________________________');
+db.once("open", function() {
+  console.log("mongoose connected successfully");
+  console.log("____________________________");
 });
 
 let tasksSchema = new mongoose.Schema({
@@ -18,7 +18,7 @@ let tasksSchema = new mongoose.Schema({
   isCompleted: Boolean
 });
 
-let Tasks = mongoose.model('tasks', tasksSchema);
+let Tasks = mongoose.model("tasks", tasksSchema);
 
 let getTasks = cb => {
   Tasks.find({}, (err, data) => {
@@ -64,11 +64,11 @@ let updateTask = (id, cb) => {
 
 //Q3:we have 4 errors here please fix them
 let deleteTask = (id, cb) => {
-  tasks.deleteOne({ ID: cb }, (err, result) => {
+  Tasks.deleteOne({ _id: id }, err => {
     if (err) {
       cb(err);
     } else {
-      getTasks();
+      getTasks(cb);
     }
   });
 };
