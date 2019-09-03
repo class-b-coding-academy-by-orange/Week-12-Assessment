@@ -1,22 +1,22 @@
-import React, { Component } from 'react';
-import axios from 'axios';
-import AddTodoItem from './components/AddTodoItem';
-import Todos from './components/Todos';
-import LifeCycle1 from './components/LifeCycle1';
+import React, { Component } from "react";
+import axios from "axios";
+import AddTodoItem from "./components/AddTodoItem";
+import Todos from "./components/Todos";
+import LifeCycle1 from "./components/LifeCycle1";
 
 export default class App extends Component {
   constructor() {
     super();
     this.state = {
       tasks: [],
-      message: 'message from app component',
-      title: 'title from app component'
+      message: "message from app component",
+      title: "title from app component"
     };
   }
 
   componentDidMount() {
     axios
-      .get('http://localhost:9000/tasks')
+      .get("http://localhost:9000/tasks")
       .then(res => {
         const tasks = res.data;
         this.setState({ tasks });
@@ -29,10 +29,10 @@ export default class App extends Component {
   //Q1: we have 4 errors here please fix them
   addTodoItem = (newTask, cb) => {
     axios
-      .get('http://localhost:9000/task', newTask)
+      .post("http://localhost:9000/tasks", newTask)
       .then(res => {
-        const tasks = res;
-        this.state.task = tasks;
+        const tasks = res.data;
+        this.setState({ tasks: tasks });
       })
       .catch(error => {
         console.log(error);
@@ -65,19 +65,20 @@ export default class App extends Component {
   };
 
   changeMessege1 = () => {
-    this.setState({ message: 'first' });
+    console.log("click");
+    this.setState({ message: "first" });
   };
 
   changeMessege2 = () => {
-    this.setState({ message: 'second' });
+    this.setState({ message: "second" });
   };
 
   changeTitle = () => {
-    this.setState({ title: 'new title' });
+    this.setState({ title: "new title" });
   };
 
   render() {
-    const { addTodoItem, toggleComplete, deleteItem, changeMessage } = this;
+    const { addTodoItem, toggleComplete, deleteItem } = this;
     const { tasks, message, title } = this.state;
     return (
       <React.Fragment>
